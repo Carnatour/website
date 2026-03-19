@@ -255,3 +255,22 @@ main {
 .audio-card a:hover {
   border-bottom-color: #c9a96e;
 }
+
+.card-description {
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: #888;
+  line-height: 1.7;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+  margin-bottom: 0;
+}
+
+.audio-card:hover .card-description,
+.video-card:hover .card-description {
+  max-height: 120px;
+  opacity: 1;
+  margin-bottom: 14px;
+}
