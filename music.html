@@ -57,13 +57,35 @@ past or the future."</p>
     </main>
 
     <script>
-  document.querySelectorAll('.audio-card').forEach(card => {
-    const media = card.querySelector('audio');
-    if (!media) return;
+  // ── YouTube IFrame API ──
+  const tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  document.head.appendChild(tag);
 
-    media.addEventListener('play', () => card.classList.add('is-playing'));
-    media.addEventListener('pause', () => card.classList.remove('is-playing'));
-    media.addEventListener('ended', () => card.classList.remove('is-playing'));
+  function onYouTubeIframeAPIReady() {
+    const iframe = document.getElementById('yt-player');
+    const card = iframe.closest('.video-card');
+
+    new YT.Player(iframe, {
+      events: {
+        onStateChange: (event) => {
+          if (event.data === YT.PlayerState.PLAYING) {
+            card.classList.add('is-playing');
+          } else {
+            card.classList.remove('is-playing');
+          }
+        }
+      }
+    });
+  }
+
+  // ── Audio cards ──
+  document.querySelectorAll('.audio-card').forEach(card => {
+    const audio = card.querySelector('audio');
+    if (!audio) return;
+    audio.addEventListener('play',  () => card.classList.add('is-playing'));
+    audio.addEventListener('pause', () => card.classList.remove('is-playing'));
+    audio.addEventListener('ended', () => card.classList.remove('is-playing'));
   });
 </script>
     
