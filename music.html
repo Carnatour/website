@@ -56,5 +56,16 @@ past or the future."</p>
 
     </main>
 
+    <script>
+  document.querySelectorAll('.audio-card, .video-card').forEach(card => {
+    const media = card.querySelector('audio, video');
+    if (!media) return;
+
+    media.addEventListener('play', () => card.classList.add('is-playing'));
+    media.addEventListener('pause', () => card.classList.remove('is-playing'));
+    media.addEventListener('ended', () => card.classList.remove('is-playing'));
+  });
+</script>
+    
   </body>
 </html>
