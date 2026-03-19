@@ -275,3 +275,11 @@ main {
   opacity: 1;
   margin-bottom: 16px;
 }
+
+
+.audio-card.is-playing .card-description,
+.video-card.is-playing .card-description {
+  max-height: 400px;
+  opacity: 1;
+  margin-bottom: 16px;
+}
