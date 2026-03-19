@@ -57,8 +57,8 @@ past or the future."</p>
     </main>
 
     <script>
-  document.querySelectorAll('.audio-card, .video-card').forEach(card => {
-    const media = card.querySelector('audio, video');
+  document.querySelectorAll('.audio-card').forEach(card => {
+    const media = card.querySelector('audio');
     if (!media) return;
 
     media.addEventListener('play', () => card.classList.add('is-playing'));
